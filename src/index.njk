@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>{{ resume.pageTitle }}</title>
+    <link rel="stylesheet" href="./resume.css" />
+  </head>
+  <body>
+    <main class="resume">
+      <header class="hero">
+        <p class="eyebrow">{{ resume.profile.role }}</p>
+        <h1>{{ resume.profile.name }}</h1>
+        <p class="summary">
+          {{ resume.profile.summaryMarkdown | markdownInline | safe }}
+        </p>
+        <ul class="contact-list" aria-label="연락처와 링크">
+          {% for contact in resume.contacts %}
+          <li>
+            <img
+              class="contact-icon"
+              src="{{ contact.icon }}"
+              alt=""
+              width="20"
+              height="20"
+              aria-hidden="true"
+            />
+            <span class="contact-label">{{ contact.label }}</span>
+            <a href="{{ contact.href }}">{{ contact.value }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </header>
+
+      <section class="section" aria-labelledby="experience-heading">
+        <h2 class="section-title" id="experience-heading">경력</h2>
+
+        {% for job in resume.experience %}
+        <article class="company">
+          <div class="company-logo">
+            <img
+              src="{{ job.logo }}"
+              alt="{{ job.company }} 로고"
+              width="46"
+              height="46"
+            />
+          </div>
+          <header class="company-header">
+            <h3>{{ job.company }}</h3>
+            <p class="meta">
+              {{ job.period }} &nbsp;|&nbsp; {{ job.employment }} &nbsp;|&nbsp;
+              {{ job.position }}
+            </p>
+          </header>
+
+          <div class="company-body">
+            {% for project in job.projects %}
+            <section class="project">
+              <h4>{{ project.title }}</h4>
+              <p class="meta">
+                {{ project.period }} &nbsp;|&nbsp; {{ project.position }}
+              </p>
+              {{ project.descriptionMarkdown | markdownBlock | safe }}
+            </section>
+            {% endfor %}
+          </div>
+        </article>
+        {% endfor %}
+      </section>
+
+      <section class="section" aria-labelledby="side-projects-heading">
+        <h2 class="section-title" id="side-projects-heading">사이드 프로젝트</h2>
+
+        <div class="side-project-list">
+          {% for project in resume.sideProjects %}
+          <article
+            class="side-project{% if not project.logo %} side-project--without-logo{% endif %}"
+          >
+            {% if project.logo %}
+            <div class="side-project-logo">
+              <a class="side-project-logo-link" href="{{ project.link }}">
+                <img
+                  src="{{ project.logo }}"
+                  alt="{{ project.title }} 로고"
+                  width="46"
+                  height="46"
+                />
+              </a>
+            </div>
+            {% endif %}
+            <div class="side-project-content">
+              <header class="side-project-header">
+                <h3>
+                  <a href="{{ project.link }}">{{ project.title }}</a>
+                </h3>
+                <p class="meta">{{ project.period }}</p>
+                <a class="side-project-link" href="{{ project.link }}">
+                  {{ project.link }}
+                </a>
+              </header>
+              <div class="side-project-description">
+                {{ project.descriptionMarkdown | markdownBlock | safe }}
+              </div>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="section compact-grid" aria-label="추가 정보">
+        <section class="compact-section" aria-labelledby="education-heading">
+          <h2 class="section-title" id="education-heading">학력</h2>
+          <h3 class="entry-title">{{ resume.education.school }}</h3>
+          <p class="entry-meta">
+            {{ resume.education.period }} &nbsp;|&nbsp;
+            {{ resume.education.status }} &nbsp;|&nbsp;
+            {{ resume.education.major }}
+          </p>
+        </section>
+
+        <section class="compact-section" aria-labelledby="language-heading">
+          <h2 class="section-title" id="language-heading">언어</h2>
+          <h3 class="entry-title">{{ resume.language.name }}</h3>
+          <p class="entry-meta">{{ resume.language.qualification }}</p>
+        </section>
+      </section>
+
+      <section class="section compact-section" aria-labelledby="skills-heading">
+        <h2 class="section-title" id="skills-heading">스킬</h2>
+        <ul class="skill-list">
+          {% for skill in resume.skills %}
+          <li>
+            <span class="skill-label">{{ skill.label }}</span>
+            <span class="skill-items">{{ skill.items | join(", ") }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section class="section compact-section" aria-labelledby="other-heading">
+        <h2 class="section-title" id="other-heading">수상 / 자격증 / 기타</h2>
+        <ul class="simple-list">
+          {% for credential in resume.credentials %}
+          <li>
+            <strong>{{ credential.name }}</strong>
+            <span>{{ credential.date }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

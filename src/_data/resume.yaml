@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=../../schema/resume.schema.json
+# GitHub 공개용 가상 데이터입니다. 실제 인물, 조직, 프로젝트와 무관합니다.
+pageTitle: "김개발 | 프론트엔드 엔지니어 이력서"
+
+profile:
+  role: Frontend Engineer
+  name: 김개발
+  summaryMarkdown: >-
+    사용자 문제를 단순한 인터페이스로 풀어내는 프론트엔드 엔지니어입니다. React와 TypeScript를 중심으로 제품 설계, 디자인 시스템, 성능 개선, 테스트 자동화와 배포 파이프라인 구축을 경험했습니다. 복잡한 요구사항을 유지보수 가능한 구조로 정리하고, 팀이 빠르게 검증할 수 있는 제품을 만드는 데 집중합니다.
+
+contacts:
+  - label: Email
+    value: hello@example.com
+    href: mailto:hello@example.com
+    icon: ./public/gmail.png
+  - label: LinkedIn
+    value: linkedin.com/in/your-profile
+    href: https://www.linkedin.com/in/your-profile
+    icon: ./public/linkedin.png
+  - label: GitHub
+    value: github.com/your-username
+    href: https://github.com/your-username
+    icon: ./public/github.png
+
+experience:
+  - company: Example Labs
+    logo: ./public/placeholder-logo.svg
+    period: 2023.03 - 재직중
+    employment: 정규직
+    position: 프론트엔드 엔지니어
+    projects:
+      - title: B2B 디지털 자산 관리 플랫폼
+        period: 2025.07 - 2026.03
+        position: 프론트엔드
+        descriptionMarkdown: |-
+          여러 팀에 흩어진 이미지와 문서를 한곳에서 검색하고 관리하는 B2B 플랫폼을 개발했습니다. 대용량 목록을 가상화하고 업로드 작업을 큐 기반으로 분리해 화면 응답성을 개선했습니다. 공통 파일 처리 모듈과 오류 복구 흐름을 도입해 신규 포맷 추가 비용을 줄였고, 핵심 사용자 작업의 완료 시간을 **35% 단축**했습니다.
+      - title: 사내 지식 검색 어시스턴트
+        period: 2024.09 - 2025.05
+        position: 프론트엔드
+        descriptionMarkdown: |-
+          문서 검색과 질의응답을 제공하는 사내 도구의 웹 클라이언트를 구축했습니다. 스트리밍 응답, 출처 표시, 대화 이력, 권한별 접근 제어를 구현하고 API 스키마에서 타입과 클라이언트를 자동 생성하도록 정리했습니다. 반복되던 연동 코드를 제거해 기능 개발과 QA에 필요한 시간을 **40% 절감**했습니다.
+      - title: 프론트엔드 디자인 시스템
+        period: 2023.03 - 2024.08
+        position: 프론트엔드
+        descriptionMarkdown: |-
+          제품마다 중복되던 UI를 통합하기 위해 토큰, 접근성 규칙, 핵심 컴포넌트로 구성된 디자인 시스템을 만들었습니다. Storybook 문서와 시각 회귀 테스트를 배포 파이프라인에 연결하고 점진적인 마이그레이션 가이드를 제공했습니다. 신규 화면의 평균 구현 기간을 **5일에서 3일로 단축**했습니다.
+  - company: Mock Commerce
+    logo: ./public/placeholder-logo.svg
+    period: 2021.01 - 2023.02 (2년 2개월)
+    employment: 정규직
+    position: 프론트엔드 개발
+    projects:
+      - title: 커머스 웹 애플리케이션
+        period: 2021.01 - 2023.02
+        position: 프론트엔드
+        descriptionMarkdown: |-
+          상품 탐색부터 주문 완료까지 이어지는 반응형 커머스 웹을 개발했습니다. 서버 상태와 폼 상태의 책임을 분리하고 결제 실패 복구 흐름을 명확히 해 유지보수성을 높였습니다. 이미지 최적화와 코드 분할을 적용해 주요 페이지의 초기 로딩 시간을 **45% 개선**했습니다.
+
+sideProjects:
+  - title: TaskFlow
+    link: https://example.com/taskflow
+    logo: ./public/placeholder-logo.svg
+    descriptionMarkdown: |-
+      개인과 소규모 팀을 위한 칸반 기반 작업 관리 애플리케이션입니다. 오프라인 우선 데이터 동기화와 키보드 중심 조작을 실험했습니다.
+    period: 2025.08 - 진행중
+
+education:
+  school: 샘플대학교
+  period: 2014.03 - 2020.02
+  status: 졸업
+  major: 컴퓨터공학과
+
+language:
+  name: 영어
+  qualification: TOEIC 900
+
+skills:
+  - label: Frontend
+    items:
+      - React
+      - Next.js
+      - TypeScript
+      - JavaScript
+      - HTML/CSS
+  - label: UI & Testing
+    items:
+      - Storybook
+      - Tailwind CSS
+      - Vitest
+      - Playwright
+      - 디자인 시스템
+  - label: Infrastructure
+    items:
+      - AWS S3
+      - CloudFront
+      - GitHub Actions
+      - Docker
+      - Vercel
+
+credentials:
+  - name: 정보처리기사
+    date: "2021.06"

@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "resume.schema.json",
+  "title": "Resume data",
+  "description": "src/_data/resume.yaml의 편집기 검증과 자동완성을 위한 스키마",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pageTitle",
+    "profile",
+    "contacts",
+    "experience",
+    "sideProjects",
+    "education",
+    "language",
+    "skills",
+    "credentials"
+  ],
+  "properties": {
+    "pageTitle": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "profile": {
+      "$ref": "#/$defs/profile"
+    },
+    "contacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/contact"
+      }
+    },
+    "experience": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/experience"
+      }
+    },
+    "sideProjects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sideProject"
+      }
+    },
+    "education": {
+      "$ref": "#/$defs/education"
+    },
+    "language": {
+      "$ref": "#/$defs/language"
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/skill"
+      }
+    },
+    "credentials": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/credential"
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "name", "summaryMarkdown"],
+      "properties": {
+        "role": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "summaryMarkdown": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "value", "href", "icon"],
+      "properties": {
+        "label": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "value": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "href": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "icon": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "period", "position", "descriptionMarkdown"],
+      "properties": {
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "period": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "position": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "descriptionMarkdown": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "experience": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "company",
+        "logo",
+        "period",
+        "employment",
+        "position",
+        "projects"
+      ],
+      "properties": {
+        "company": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "logo": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "period": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "employment": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "position": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "projects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/project"
+          }
+        }
+      }
+    },
+    "sideProject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "link", "descriptionMarkdown", "period"],
+      "properties": {
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "link": {
+          "type": "string",
+          "format": "uri"
+        },
+        "logo": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "descriptionMarkdown": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "period": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "education": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["school", "period", "status", "major"],
+      "properties": {
+        "school": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "period": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "status": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "major": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "language": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "qualification"],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "qualification": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "skill": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "items"],
+      "properties": {
+        "label": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    "credential": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "date"],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "date": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}
